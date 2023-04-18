@@ -3,12 +3,14 @@ using System.Text;
 using System;
 using Newtonsoft.Json;
 using Test_Chat_GPT_Phone_App.Models;
+using System.Windows.Input;
 
 namespace Test_Chat_GPT_Phone_App;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+
+    int count = 0;
 
 	public MainPage()
 	{
@@ -59,6 +61,7 @@ public partial class MainPage : ContentPage
 
     private async void SendTextToChatGPTAsync(object sender, EventArgs e)
     {
+        ResultLabel.Focus();
         string text = UserInputEntry.Text;
 
         string apiKey = "Bearer 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";
@@ -145,6 +148,11 @@ public partial class MainPage : ContentPage
         }
 
         ResultLabel.Text = ("Failed to get a response after retrying 5 times.");
+    }
+
+    private async void NavigateToImagePage(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//Image");
     }
 }
 

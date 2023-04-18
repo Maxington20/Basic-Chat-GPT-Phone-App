@@ -6,9 +6,14 @@
     xmlns:local="clr-namespace:Test_Chat_GPT_Phone_App"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Chat GPT"
+        <ShellContent
+        Title="Completion Request"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+        <ShellContent
+        Title="Image Request"
+        ContentTemplate="{DataTemplate local:Image}"
+        Route="Image"/>
 
 </Shell>

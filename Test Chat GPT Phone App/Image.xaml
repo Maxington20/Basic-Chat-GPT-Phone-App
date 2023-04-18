@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Test_Chat_GPT_Phone_App.MainPage">
-
+             x:Class="Test_Chat_GPT_Phone_App.Image"
+             Title="Image">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Image" Clicked="NavigateToImagePage"/>
+        <ToolbarItem Text="Text Completion" Clicked="NavigateToTextCompletionPage"/>
     </ContentPage.ToolbarItems>
 
     <Grid>
@@ -24,10 +24,11 @@
                 </Grid>
 
                 <Label x:Name="ResultLabel" 
-                   Text="Hello, What can I do for you today?"
+                   Text="Describe the image you would like"
                    FontSize="18"
                    HorizontalOptions="CenterAndExpand" 
                    VerticalOptions="CenterAndExpand"/>
+                <Image Source="" IsVisible="false" x:Name="ImageSlot"/>
 
             </VerticalStackLayout>
         </ScrollView>
@@ -40,19 +41,12 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <Entry x:Name="UserInputEntry" Placeholder="Enter Text Here" Completed="SendTextToChatGPTAsync" TextColor="Black"/>
-                    <Button x:Name="CounterBtn" Text="Speak" SemanticProperties.Hint="Counts the number of times you click" Clicked="OnCounterClicked" Grid.Column="1" Margin="10,0,0,0" />
+                    <Entry x:Name="UserInputEntry" Placeholder="Enter Text Here" Completed="SendImageRequestToChatGPTAsync" TextColor="Black"/>
+                    <Button x:Name="CounterBtn" Text="Speak" SemanticProperties.Hint="Counts the number of times you click"  Grid.Column="1" Margin="10,0,0,0" />
                 </Grid>
             </Frame>
         </StackLayout>
 
     </Grid>
-
-    <ContentPage.Resources>
-        <Style TargetType="Label">
-            <Setter Property="HorizontalTextAlignment" Value="Center" />
-            <Setter Property="VerticalTextAlignment" Value="Center" />
-        </Style>
-    </ContentPage.Resources>
 
 </ContentPage>
