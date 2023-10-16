@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Test_Chat_GPT_Phone_App.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Image" Clicked="NavigateToImagePage"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Center">
+
+                <Grid HorizontalOptions="CenterAndExpand">
+                    <ActivityIndicator x:Name="LoadingIndicator" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                </Grid>
+
+                <Label x:Name="ResultLabel" 
+                   Text="Hello, What can I do for you today?"
+                   FontSize="18"
+                   HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <StackLayout Grid.Row="1" Margin="20,10">
+            <Frame BorderColor="Gray" HasShadow="False" CornerRadius="5" Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Entry x:Name="UserInputEntry" Placeholder="Enter Text Here" Completed="SendTextToChatGPTAsync" TextColor="Black"/>
+                    <Button x:Name="CounterBtn" Text="Speak" SemanticProperties.Hint="Counts the number of times you click" Clicked="OnCounterClicked" Grid.Column="1" Margin="10,0,0,0" />
+                </Grid>
+            </Frame>
+        </StackLayout>
+
+    </Grid>
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+
+</ContentPage>
