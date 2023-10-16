@@ -28,7 +28,14 @@
                    FontSize="18"
                    HorizontalOptions="CenterAndExpand" 
                    VerticalOptions="CenterAndExpand"/>
-                <Image Source="" IsVisible="false" x:Name="ImageSlot"/>
+                <Image 
+                    Source="null" 
+                    IsVisible="false" 
+                    x:Name="ImageSlot"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="350"
+                    HeightRequest="350"/>
 
             </VerticalStackLayout>
         </ScrollView>

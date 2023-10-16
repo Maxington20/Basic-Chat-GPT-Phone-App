@@ -15,7 +15,7 @@ public partial class Image : ContentPage
 
     private async void NavigateToTextCompletionPage(object sender, EventArgs e)
     {
-        ImageSlot.Source = "";
+        ImageSlot.Source = null;        
         ImageSlot.IsVisible = false;
         await Shell.Current.GoToAsync("//MainPage");
     }
@@ -28,9 +28,9 @@ public partial class Image : ContentPage
         UserInputEntry.Text = "";
         ResultLabel.Text = "";
         ImageSlot.IsVisible = false;
-        ImageSlot.Source = "";
+        ImageSlot.Source = null;
 
-        string apiKey = "Bearer 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";
+        string apiKey = "testapikey";
         string url = "https://api.openai.com/v1/images/generations";
 
         using (var httpClient = new HttpClient())
@@ -52,15 +52,16 @@ public partial class Image : ContentPage
                 dynamic imageResponse = JsonConvert.DeserializeObject(initialContent);
 
                 var imageUrl = Convert.ToString(imageResponse.data[0].url);
-
+                
                 ImageSlot.Source = imageUrl;
-                ImageSlot.IsVisible = true;
-                ImageSlot.Focus();
+                Thread.Sleep(5000);                
             }
             else
             {
                 ResultLabel.Text = ($"Request failed with status code {response.StatusCode}.");                
             }
+            ImageSlot.IsVisible = true;
+            ImageSlot.Focus();
             LoadingIndicator.IsVisible = false;
             LoadingIndicator.IsRunning = false;
         }
